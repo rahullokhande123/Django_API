@@ -193,7 +193,12 @@ class Stu_list(APIView):
         serializer=StudentSerializer(movies,many=True) 
         return Response(serializer.data)
      
-    
+    def post(self, request): 
+        serializer=StudentSerializer(data=request.data) 
+        if serializer.is_valid(): 
+            serializer.save() 
+            return Response(serializer.data) 
+        else: return Response(serializer.errors)
 
 
     

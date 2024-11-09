@@ -216,6 +216,9 @@ class Stu_info(APIView):
             # return Response(serializer.data) 
             return Response({'msg':"Data updated successfully"})
         else: return Response(serializer.errors) 
-   
+    def delete(self,request,pk): 
+        movie=Student.objects.get(pk=pk) 
+        movie.delete() 
+        return Response({'msg':"Data deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
 
         

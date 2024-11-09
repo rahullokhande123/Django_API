@@ -186,7 +186,14 @@ from rest_framework import status
  
 from rest_framework.views import APIView
 
+class Stu_list(APIView):
 
+    def get(self, request): 
+        movies = Student.objects.all() 
+        serializer=StudentSerializer(movies,many=True) 
+        return Response(serializer.data)
+     
+    
 
 
     

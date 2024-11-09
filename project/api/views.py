@@ -200,7 +200,14 @@ class Stu_list(APIView):
             return Response(serializer.data) 
         else: return Response(serializer.errors)
 
-
+class Stu_info(APIView): 
+    def get(self, request,pk): 
+        try: 
+            movie=Student.objects.get(pk=pk) 
+        except Student.DoesNotExist: 
+            return Response({'msg':'Detail not found'},status=status.HTTP_404_NOT_FOUND) 
+        serializer = StudentSerializer(movie) 
+        return Response(serializer.data) 
     
    
 

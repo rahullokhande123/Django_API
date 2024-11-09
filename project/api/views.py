@@ -208,7 +208,14 @@ class Stu_info(APIView):
             return Response({'msg':'Detail not found'},status=status.HTTP_404_NOT_FOUND) 
         serializer = StudentSerializer(movie) 
         return Response(serializer.data) 
-    
+    def put(self,request,pk): 
+        movie=Student.objects.get(pk=pk) 
+        serializer = StudentSerializer(movie,data=request.data) 
+        if serializer.is_valid(): 
+            serializer.save() 
+            # return Response(serializer.data) 
+            return Response({'msg':"Data updated successfully"})
+        else: return Response(serializer.errors) 
    
 
         

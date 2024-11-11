@@ -261,7 +261,14 @@ from rest_framework.views import APIView
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
 
+# ========================= Genric Class Based API ==============================
 
+from rest_framework import generics
+
+
+class Stu_list(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 
 
 

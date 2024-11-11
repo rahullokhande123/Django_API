@@ -17,9 +17,12 @@
     
 # #     # json_data = JSONRenderer().render(serializer.data)
 # #     # print("Json_data = ",json_data)
-# #     # return HttpResponse(json_data,content_type='application/json')
+# #     # return HttpResponse(json_data,content_type='application/json') ??????????
+
 # #     # when we send json data from views then contet type must be a "application/json" 
-# #     return JsonResponse(serializer.data,safe=False) # -----------
+
+# #     return JsonResponse(serializer.data,safe=False) # ----------- ????????
+
 # #     # first argument of JsonResponse should be a dict, otherwise set safe=False
 
 # # def student_detail(req,pk):
@@ -39,6 +42,8 @@
 # #     return JsonResponse(serializer.data,safe=False)
 # #     # first argument of JsonResponse should be a dict, otherwise set safe=False
 
+# ======================== Basic F() Based api =====================
+
 # @csrf_exempt
 # def stu_api(request):
 #     if request.method=="GET":
@@ -46,7 +51,7 @@
 #         print("Hello")
 #         print(json_data)
 #         if json_data:
-#             stream = io.BytesIO(json_data)
+#             stream = io.BytesIO(json_data) ?????????
 #             python_data=JSONParser().parse(stream)
 #             print(python_data)
 #             id = python_data.get('id')
@@ -64,9 +69,9 @@
 #         json_data = request.body
 #         stream = io.BytesIO(json_data)
 #         python_data = JSONParser().parse(stream)
-#         serializer =StudentSerializer(data = python_data)
+#         serializer =StudentSerializer(data = python_data) ??????
 #         if serializer.is_valid():
-#             serializer.save()
+#             serializer.save()??????
 #             res = {'msg': 'Data Created'}
 #             json_data = JSONRenderer().render(res)
 #             return HttpResponse(json_data, content_type='application/json')
@@ -79,7 +84,7 @@
 #         python_data = JSONParser().parse(stream)
 #         id = python_data.get('id')
 #         stu = Student.objects.get(id=id)
-#         # serializer = StudentSerializer(stu, data=python_data, partial = True)
+#         # serializer = StudentSerializer(stu, data=python_data, partial = True) ??????
 #         serializer = StudentSerializer(stu, data=python_data)
 #         if serializer.is_valid():
 #             serializer.save()
@@ -118,7 +123,8 @@
 #             res = {'msg': 'id not present in Database'}
 #             return JsonResponse(res)
 
-        
+
+#     ================================= F() Based DRF Api ===========================
 
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
@@ -143,7 +149,7 @@ from rest_framework import status
 #         return Response(serializer.data) 
     
 #     elif request.method=='POST':
-#         serializer=StudentSerializer(data=request.data) 
+#         serializer=StudentSerializer(data=request.data) ?????
 #         if serializer.is_valid(): 
 #             serializer.save() 
 #             return Response(serializer.data) 
@@ -160,7 +166,7 @@ from rest_framework import status
         
 #         elif request.method=='PUT': 
 #             movie=Student.objects.get(id=pk) 
-#             serializer = StudentSerializer(movie,data=request.data) 
+#             serializer = StudentSerializer(movie,data=request.data) ????????
 #             if serializer.is_valid(): 
 #                 serializer.save() 
 #                 return Response(serializer.data) 
@@ -182,43 +188,64 @@ from rest_framework import status
 #         res = {'msg': 'id not present in Database'}
 #         return Response(res)
 
-# =================== Class Based View URL ======================
+# =================== Class Based DRF API ======================
  
 from rest_framework.views import APIView
 
-class Stu_list(APIView):
+# class Stu_list(APIView):
 
-    def get(self, request): 
-        movies = Student.objects.all() 
-        serializer=StudentSerializer(movies,many=True) 
-        return Response(serializer.data)
+#     def get(self, request): 
+#         movies = Student.objects.all() 
+#         serializer=StudentSerializer(movies,many=True) 
+#         return Response(serializer.data)
      
-    def post(self, request): 
-        serializer=StudentSerializer(data=request.data) 
-        if serializer.is_valid(): 
-            serializer.save() 
-            return Response(serializer.data) 
-        else: return Response(serializer.errors)
+#     def post(self, request): 
+#         serializer=StudentSerializer(data=request.data) 
+#         if serializer.is_valid(): 
+#             serializer.save() 
+#             return Response(serializer.data) 
+#         else: return Response(serializer.errors)
 
-class Stu_info(APIView): 
-    def get(self, request,pk): 
-        try: 
-            movie=Student.objects.get(pk=pk) 
-        except Student.DoesNotExist: 
-            return Response({'msg':'Detail not found'},status=status.HTTP_404_NOT_FOUND) 
-        serializer = StudentSerializer(movie) 
-        return Response(serializer.data) 
-    def put(self,request,pk): 
-        movie=Student.objects.get(pk=pk) 
-        serializer = StudentSerializer(movie,data=request.data) 
-        if serializer.is_valid(): 
-            serializer.save() 
-            # return Response(serializer.data) 
-            return Response({'msg':"Data updated successfully"})
-        else: return Response(serializer.errors) 
-    def delete(self,request,pk): 
-        movie=Student.objects.get(pk=pk) 
-        movie.delete() 
-        return Response({'msg':"Data deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+# class Stu_info(APIView): 
+#     def get(self, request,pk): 
+#         try: 
+#             movie=Student.objects.get(pk=pk) 
+#         except Student.DoesNotExist: 
+#             return Response({'msg':'Detail not found'},status=status.HTTP_404_NOT_FOUND) 
+#         serializer = StudentSerializer(movie) 
+#         return Response(serializer.data) 
+#     def put(self,request,pk): 
+#         movie=Student.objects.get(pk=pk) 
+#         serializer = StudentSerializer(movie,data=request.data) 
+#         if serializer.is_valid(): 
+#             serializer.save() 
+#             # return Response(serializer.data) 
+#             return Response({'msg':"Data updated successfully"})
+#         else: return Response(serializer.errors) 
+#     def delete(self,request,pk): 
+#         movie=Student.objects.get(pk=pk) 
+#         movie.delete() 
+#         return Response({'msg':"Data deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
 
+# ============================= Mixin Class Basde DRF api =============================
         
+# from rest_framework import mixins
+# from rest_framework import generics
+
+
+# class Stu_list(mixins.ListModelMixin,
+#                   mixins.CreateModelMixin,
+#                   generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+
+
+
+
+
+
+
+

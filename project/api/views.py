@@ -245,6 +245,13 @@ from rest_framework.views import APIView
 #     def post(self, request, *args, **kwargs):
 #         return self.create(request, *args, **kwargs)
     
+# class Stu_info(mixins.RetrieveModelMixin,
+#                     mixins.UpdateModelMixin,
+#                     mixins.DestroyModelMixin,
+#                     generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
+
 
 
 

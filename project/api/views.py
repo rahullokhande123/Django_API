@@ -252,6 +252,9 @@ from rest_framework.views import APIView
 #     queryset = Student.objects.all()
 #     serializer_class = StudentSerializer
 
+#     def get(self, request, *args, **kwargs):
+#         return self.retrieve(request, *args, **kwargs)
+
 
 
 

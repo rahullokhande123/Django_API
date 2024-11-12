@@ -279,7 +279,27 @@ from rest_framework.views import APIView
 
 
 
+# from rest_framework import viewsets
 
+# class MovieViewSet(viewsets.ViewSet):
+#     def list(self, request):
+#         # print("List")
+#         # print("Basename:", self.basename)
+#         # print("Action:", self.action)
+#         # print("Detail:", self.detail)
+#         # print("Suffix:", self.suffix)
+#         # print("Name:", self.name)
+#         # print("Description:", self.description)
+#         stu = Student.objects.all()
+#         serializer = StudentSerializer(stu, many=True)
+#         return Response(serializer.data)
+
+#     def retrieve(self, request, pk=None):
+#         id = pk
+#         if id is not None:
+#             stu = Student.objects.get(id=id)
+#             serializer = StudentSerializer(stu)
+#             return Response(serializer.data)
 
 
 

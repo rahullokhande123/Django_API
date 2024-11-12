@@ -301,6 +301,13 @@ from rest_framework.views import APIView
 #             serializer = StudentSerializer(stu)
 #             return Response(serializer.data)
 
+#     def create(self, request):
+#         serializer = StudentSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg':'Data Created'}, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

@@ -317,6 +317,15 @@ from rest_framework.views import APIView
 #             return Response({'msg':'Complete Data Updated'})
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#     def partial_update(self,request, pk):
+#         id = pk
+#         stu = Student.objects.get(pk=id)
+#         serializer = StudentSerializer(stu, data=request.data, partial=True)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg':'Partial Data Updated'})
+#         return Response(serializer.errors)
+
 
 
 

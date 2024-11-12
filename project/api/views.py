@@ -326,9 +326,20 @@ from rest_framework.views import APIView
 #             return Response({'msg':'Partial Data Updated'})
 #         return Response(serializer.errors)
 
+#     def destroy(self,request, pk):
+#         id = pk
+#         stu = Student.objects.get(pk=id)
+#         stu.delete()
+#         return Response({'msg':'Data Deleted'})
 
 
+from rest_framework import viewsets
+# from rest_framework.permissions import IsAuthenticated
 
-
+# create a viewset
+# class MovieViewSet(viewsets.ReadOnlyModelViewSet):
+class MovieViewSet(viewsets.ModelViewSet):
+	queryset = Student.objects.all()
+	serializer_class = StudentSerializer
 
 

@@ -308,6 +308,15 @@ from rest_framework.views import APIView
 #             return Response({'msg':'Data Created'}, status=status.HTTP_201_CREATED)
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#     def update(self,request, pk):
+#         id = pk
+#         stu = Student.objects.get(pk=id)
+#         serializer = StudentSerializer(stu, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response({'msg':'Complete Data Updated'})
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

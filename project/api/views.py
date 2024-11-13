@@ -276,7 +276,7 @@ from rest_framework.views import APIView
 #     serializer_class = StudentSerializer
 
 
-
+# ====================== DRF Single Root By router.py ===========================
 
 
 # from rest_framework import viewsets
@@ -334,6 +334,8 @@ from rest_framework.views import APIView
 
 
 from rest_framework import viewsets
+from .models import ComStudent
+from .serializers import CompleteSerializer
 # from rest_framework.permissions import IsAuthenticated
 
 # create a viewset

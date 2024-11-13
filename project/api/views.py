@@ -344,4 +344,6 @@ class MovieViewSet(viewsets.ModelViewSet):
 	queryset = Student.objects.all()
 	serializer_class = StudentSerializer
 
-
+class RDStuData(viewsets.ModelViewSet):
+	queryset = ComStudent.objects.all()
+	serializer_class = CompleteSerializer

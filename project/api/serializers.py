@@ -28,3 +28,4 @@ class CompleteSerializer(serializers.ModelSerializer):
     class Meta:
         model=ComStudent
         fields='__all__'
+        

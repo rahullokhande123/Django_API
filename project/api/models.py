@@ -24,10 +24,10 @@ class Student(models.Model):
 #         return self.name
 
 class ComStudent(models.Model):
+        roll = models.CharField(max_length=100)
         name = models.CharField(max_length=100)
-        fees = models.IntegerField(null=True)
         city = models.CharField(max_length=100)
-        roll = models.IntegerField()
+        fees = models.CharField(max_length=100)
         
         def _str_(self):
              return self.name

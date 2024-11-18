@@ -28,11 +28,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 CORS_ALLOWED_ORIGINS = [
-    # "http://localhost:5173",
+    "http://localhost:5173",
     # "http://localhost:3000",
-    "http://127.0.0.1:5173",
+    # "http://127.0.0.1:5173",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:5173",
+# ]
 
 
 # Application definition
@@ -134,7 +139,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 CORS_ALLOW_METHODS = (
     "DELETE",
     "GET",
@@ -144,11 +148,11 @@ CORS_ALLOW_METHODS = (
     "PUT",
 )
 
-CORS_ALLOW_HEADERS = (
-    "accept",
-    "authorization",
-    "content-type",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-)
+# CORS_ALLOW_HEADERS = (
+#     "accept",
+#     "authorization",
+#     "content-type",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+# )

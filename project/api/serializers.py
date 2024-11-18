@@ -27,5 +27,4 @@ class StudentSerializer(serializers.ModelSerializer):
 class CompleteSerializer(serializers.ModelSerializer):
     class Meta:
         model=ComStudent
-        # fields='__all__'
         fields=['id','name','fees','city','roll']

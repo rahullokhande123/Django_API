@@ -1,6 +1,7 @@
 
 from django.urls import path,include
 from .routers import router
+from .import views
 
 
 urlpatterns = [
@@ -8,6 +9,7 @@ urlpatterns = [
     # path("stu_list/",Stu_list.as_view(),name='stu_list'),
     
     # path("stu_api/",stu_api,name='stu_api')
-      path('',include(router.urls))
+      path('',include(router.urls)),
+      path('search/', views.search, name='search')
 
 ]

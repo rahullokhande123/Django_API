@@ -20,6 +20,6 @@ urlpatterns = [
     # =============== For Model Single Root DRF API ====================
       path('',include(router.urls)),
       
-      path('search/<int:pk>', views.search, name='search')
+      path('search/<str:pk>', views.search, name='search')
 
 ]

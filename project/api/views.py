@@ -348,5 +348,3 @@ class RDStuData(viewsets.ModelViewSet):
 	queryset = ComStudent.objects.all()
 	serializer_class = CompleteSerializer
 
-def search(request):
-	print("Search !!!!!!!!!!")

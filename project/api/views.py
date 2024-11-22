@@ -336,6 +336,8 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 from .models import ComStudent
 from .serializers import CompleteSerializer
+from rest_framework.response import Response
+from django.http import Http404
 # from rest_framework.permissions import IsAuthenticated
 
 # create a viewset
@@ -348,5 +350,10 @@ class RDStuData(viewsets.ModelViewSet):
 	queryset = ComStudent.objects.all()
 	serializer_class = CompleteSerializer
 
-def search(request,pk):
-	print("Search !!!!!!!!!!")
+
+class search(APIView):
+
+    def get(self, request, pk):
+        snippet = ComStudent.objects.get(id=pk)
+        serializer = CompleteSerializer(snippet)
+        

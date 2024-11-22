@@ -1,7 +1,7 @@
 
 from django.urls import path,include
 from .routers import router
-from .import views
+from .views import *
 
 
 urlpatterns = [
@@ -19,7 +19,6 @@ urlpatterns = [
 
     # =============== For Model Single Root DRF API ====================
       path('',include(router.urls)),
-      
-      path('search/<str:pk>', views.search, name='search')
+      path('search/<int:pk>/', search.as_view(), name='search')
 
 ]

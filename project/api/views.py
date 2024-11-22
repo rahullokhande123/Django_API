@@ -356,4 +356,4 @@ class search(APIView):
     def get(self, request, pk):
         snippet = ComStudent.objects.get(id=pk)
         serializer = CompleteSerializer(snippet)
-        
+        return Response(serializer.data)
